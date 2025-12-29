@@ -1,0 +1,472 @@
+  
+    
+
+
+
+
+<!-- START: FINAL LANDING PAGE HTML (tawa-sal.com) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tawa-Sal</title>
+  <meta name="description" content="Operator-managed services built around WhatsApp. Contact-only." />
+
+  <style>
+    :root{
+
+  /* Dark / serious theme */
+      --bg0: #070A12;
+      --bg1: #0B1020;
+
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.72);
+
+      --panel: rgba(255,255,255,0.04);
+      --panel2: rgba(255,255,255,0.055);
+      --border: rgba(255,255,255,0.08);
+
+      /* Accent (single) */
+      --accent: #508AEB;
+      --accentSoft: rgba(80,138,235,0.22);
+
+      /* Layout */
+      --maxw: 1120px;
+      --radius: 14px;
+
+      /* Fixed header */
+      --headerH: 64px;
+    }
+
+    html, body{
+      margin:0;
+      padding:0;
+      background:
+        radial-gradient(1200px 600px at 15% 10%, rgba(80,138,235,0.14), transparent 55%),
+        radial-gradient(900px 500px at 85% 0%, rgba(80,138,235,0.10), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg0) 55%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Ensure content isn't hidden under fixed header */
+    body { padding-top: var(--headerH); }
+
+    .container{
+      max-width: var(--maxw);
+      padding: 0 20px;
+      margin: 0 auto;
+    }
+
+    a { color: inherit; }
+
+    /* ========== FIXED HEADER ========== */
+    .topHeader{
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--headerH);
+      z-index: 1000;
+
+      background: rgba(7,10,18,0.65);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }   
+
+ .topHeaderInner{
+      height: 100%;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .logoLink{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      text-decoration: none;
+      user-select: none;
+    }
+
+    .logoImg{
+      height: 64px; /* tuned for compact fixed header */
+      width: auto;
+      display:block;
+    }
+
+    .ctaTop{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      font-weight: 650;
+      padding: 10px 14px;
+      border-radius: 12px;
+      color: #fff;
+
+      background: linear-gradient(180deg, rgba(80,138,235,0.98), rgba(80,138,235,0.86));
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.35);
+
+      transition: filter 0.2s ease, transform 0.1s ease;
+    }
+    .ctaTop:hover{ filter: brightness(1.05); }
+    .ctaTop:active{ transform: translateY(1px); }
+
+    /* ========== HERO ========== */
+    header.hero{
+      padding: 28px 0 28px;
+    }
+    header.hero .container{
+      display: grid;
+      grid-template-columns: 1fr 520px;
+      grid-template-areas: "text image";
+      gap: 24px;
+      align-items: center;
+    }
+
+    .heroTextRow{
+      display:flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 12px;
+      flex-wrap: nowrap;
+      padding-top: 12px;
+      text-align: left;
+      grid-area: text;
+    }
+
+
+  .heroTitle{
+      margin: 0;
+      font-size: 46px;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      font-weight: 650;
+      max-width: none;
+      width: 100%;
+    }
+
+    .heroSubtitle{
+      margin: 0 0 4px;
+      font-size: 18px;
+      color: var(--muted);
+      max-width: none;
+      width: 100%;
+    }
+
+    .divider{
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      margin: 28px 0 0;
+    }
+
+    /* Hero image (container width) */
+    .heroImage{
+      margin-top: 0;
+      border-radius: 0;
+      border: none;
+      background: transparent;
+      overflow: visible;
+      grid-area: image;
+      align-self: start;
+      justify-self: end;
+      max-width: 520px;
+      position: relative;
+    }
+
+    /* Overlay blend to unify tones without hiding the image */
+    .heroArt{
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.14));
+      mix-blend-mode: overlay; /* try multiply if overlay is too strong */
+      pointer-events: none;
+    }
+
+    .heroImage img{
+      width: 100%;
+      height: auto;
+      display: block;
+      transform: none; /* reversed back */
+    }
+
+    /* ========== SECTIONS ========== */
+    section{
+      padding: 56px 0;
+    }
+
+    .sectionTitle{
+      margin: 0 0 12px;
+      font-size: 20px;
+      letter-spacing: -0.01em;
+      font-weight: 650;
+      color: rgba(255,255,255,0.90);
+    }
+
+    p{
+      margin: 0 0 14px;
+      color: var(--muted);
+    }   
+
+ /* REMOVE / REPLACE container (rrCard removed) */
+
+    .rrGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .rrBlock{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .rrLabel{
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .rrList{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .rrList li{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      color: rgba(255,255,255,0.84);
+    }
+
+    .rrDot{
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      margin-top: 7px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px var(--accentSoft);
+      flex: 0 0 auto;
+    }
+
+   /* Contact card */
+    .contactCard{
+      margin-top: 10px;
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      max-width: 80ch;
+    }
+
+    .contactCta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-decoration:none;
+      font-weight: 650;
+      padding: 12px 16px;
+      border-radius: 12px;
+      color: #fff;
+      background: linear-gradient(180deg, rgba(80,138,235,0.98), rgba(80,138,235,0.86));
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.35);
+      transition: filter 0.2s ease, transform 0.1s ease;
+      margin-top: 6px;
+    }
+    .contactCta:hover{ filter: brightness(1.05); }
+    .contactCta:active{ transform: translateY(1px); }
+
+    /* Responsive */
+    @media (max-width: 860px){
+      .heroTitle{ font-size: 38px; max-width: none; }
+      .heroSubtitle{ font-size: 16px; }
+      .rrGrid{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px){
+      header.hero{ padding: 36px 0 38px; }
+      section{ padding: 50px 0; }
+      .heroTitle{ font-size: 34px; }
+      .ctaTop{ padding: 10px 12px; border-radius: 12px; }
+      .logoImg{ height: 48px; }
+    }
+
+    /* Desktop-only refinements */
+    @media (min-width: 861px){
+      /* Increase header height and logo size on desktop */
+      :root { --headerH: 80px; }
+      .logoImg{ height: 80px; }
+
+      /* Align hero grid on desktop */
+      header.hero .container{ grid-template-columns: 1fr 560px; gap: 28px; }
+      .heroImage{ max-width: 560px; margin: 0; justify-self: end; }
+      header.hero .divider{ grid-column: 1 / -1; margin: 16px 0 0; }
+
+      /* Smaller desktop layout for REMOVE / REPLACE */
+      /* Fix horizontal width of each column and center the grid */
+      .rrGrid{ grid-template-columns: repeat(2, 360px); justify-content: start; gap: 16px; align-items: start; margin-top: 16px; }
+      .rrCard{ padding: 0; max-width: 736px; margin: 40px auto 0; }
+      .rrBlock{ display: flex; flex-direction: column; height: auto; align-self: start; padding: 12px; text-align: left; }
+
+      /* Tighter labels and list spacing */
+      .rrLabel{ font-size: 11px; margin-bottom: 6px; }
+      .rrList{ gap: 4px; }
+      .rrList, .rrLabel{ text-align: left; }
+      .rrList li{ align-items: flex-start; font-size: 14px; gap: 8px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- FIXED HEADER -->
+  <div class="topHeader">
+    <div class="container topHeaderInner">
+      <!-- Logo clickable => scroll to top -->
+      <a class="logoLink" href="#" aria-label="Tawa-Sal">
+        <!-- Put your logo file at /var/www/tawasal/logo.png (see note below) -->
+        <img class="logoImg" src="/logo.png" alt="Tawa-Sal logo" />
+      </a>
+
+
+      <!-- Top-right CTA -->
+      <a class="ctaTop"
+         href="https://wa.me/96176832919"
+         target="_blank" rel="noopener noreferrer">
+        Get started
+      </a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="heroTextRow">
+        <h1 class="heroTitle">Operator-managed services built around WhatsApp</h1>
+        <p class="heroSubtitle">
+          We design and operate WhatsApp-based messaging workflows with reliability, control, and operational oversight.
+        </p>
+      </div>
+
+      <!-- Container-width hero image -->
+      <div class="heroImage">
+        <div class="heroArt" aria-hidden="true"></div>
+        <img src="/hero-illustration.png" alt="Hero illustration" />
+      </div>
+
+      <div class="divider"></div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- REMOVE / REPLACE WITH -->
+    <section>
+      <div class="container">
+          <div class="rrGrid">
+            <div class="rrBlock">
+              <div class="rrLabel">REMOVE</div>
+              <ul class="rrList">
+                <li><span class="rrDot"></span><span>Ban risk</span></li>
+                <li><span class="rrDot"></span><span>Chaos of multiple numbers and phones</span></li>
+                <li><span class="rrDot"></span><span>Zero visibility</span></li>
+                <li><span class="rrDot"></span><span>Manual, unscalable operations</span></li>
+              </ul>
+            </div>
+
+            <div class="rrBlock">
+              <div class="rrLabel">REPLACE WITH</div>
+              <ul class="rrList">
+                <li><span class="rrDot"></span><span>Predictability</span></li>
+                <li><span class="rrDot"></span><span>Safety</span></li>
+                <li><span class="rrDot"></span><span>Control</span></li>
+                <li><span class="rrDot"></span><span>Reporting</span></li>
+              </ul>
+            </div>
+          </div>
+
+        <div class="divider"></div>
+      </div>
+    </section>
+
+
+    <!-- HOW IT WORKS (unchanged) -->
+    <section>
+      <div class="container">
+        <h2 class="sectionTitle">How it works</h2>
+        <p>Each engagement is handled as an operated service.</p>
+        <p>
+          Workflows are reviewed, configured, and executed by our team to ensure stability, compliance, and account health.
+          Activity is monitored and logged to maintain consistent performance and operational visibility.
+        </p>
+
+        <div class="divider"></div>
+      </div>
+    </section>
+
+    <!-- SERVICES AROUND WHATSAPP (unchanged) -->
+    <section>
+      <div class="container">
+        <h2 class="sectionTitle">Services around WhatsApp</h2>
+        <p>Our services focus on WhatsApp as a communication channel.</p>
+        <p>
+          Depending on the use case, this may include outbound campaigns, notifications, or other WhatsApp-based messaging workflows.
+          Services are structured to match operational requirements and usage patterns.
+        </p>
+
+        <div class="divider"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT (unchanged, WhatsApp only) -->
+    <section>
+      <div class="container">
+        <h2 class="sectionTitle">Contact</h2>
+        <div class="contactCard">
+          <p>If you are exploring WhatsApp-based messaging for your organization, we’re available to discuss your use case.</p>
+          <p style="margin-bottom: 10px; color: rgba(255,255,255,0.88); font-weight: 600;">
+            Contact us on WhatsApp to start the conversation.
+          </p>
+
+          <a class="contactCta"
+             href="https://wa.me/96176832919"
+             target="_blank" rel="noopener noreferrer">
+            Contact us on WhatsApp
+          </a>
+
+          <div style="margin-top: 10px; font-size: 13px; color: rgba(255,255,255,0.60);">
+            WhatsApp contact only.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!--
+    DEPLOY NOTES (your VPS):
+    1) Put your logo file at: /var/www/tawasal/logo.png
+       (use the exact white mark you uploaded)
+    2) Put your illustration at: /var/www/tawasal/hero-illustration.png
+    3) Ensure Nginx serves /var/www/tawasal as the site root.
+  -->
+
+</body>
+</html>
+<!-- END: FINAL LANDING PAGE HTML -->
