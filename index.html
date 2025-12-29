@@ -1,22 +1,15 @@
-  
-    
-
-
-
-
 <!-- START: FINAL LANDING PAGE HTML (tawa-sal.com) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tawa-Sal</title>
   <meta name="description" content="Operator-managed services built around WhatsApp. Contact-only." />
 
   <style>
     :root{
-
-  /* Dark / serious theme */
+      /* Dark / serious theme */
       --bg0: #070A12;
       --bg1: #0B1020;
 
@@ -75,9 +68,9 @@
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255,255,255,0.06);
-    }   
+    }
 
- .topHeaderInner{
+    .topHeaderInner{
       height: 100%;
       display:flex;
       align-items:center;
@@ -94,7 +87,7 @@
     }
 
     .logoImg{
-      height: 64px; /* tuned for compact fixed header */
+      height: 80px;
       width: auto;
       display:block;
     }
@@ -120,73 +113,74 @@
 
     /* ========== HERO ========== */
     header.hero{
-      padding: 28px 0 28px;
-    }
-    header.hero .container{
-      display: grid;
-      grid-template-columns: 1fr 520px;
-      grid-template-areas: "text image";
-      gap: 24px;
-      align-items: center;
+      padding: 18px 0 28px;
+      padding-top: 64px; /* pushes hero down slightly; tune 40–90px */
     }
 
+    header.hero .container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    /* HERO TEXT ROW (this was missing / incorrectly pasted into HTML) */
     .heroTextRow{
       display:flex;
       flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
+      align-items: center;
       gap: 12px;
-      flex-wrap: nowrap;
-      padding-top: 12px;
-      text-align: left;
-      grid-area: text;
+      text-align: center;
+      max-width: 980px;
+      margin: 0 auto;
     }
 
+    .heroKicker{
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
 
-  .heroTitle{
+    .heroTitle{
       margin: 0;
       font-size: 46px;
       letter-spacing: -0.03em;
       line-height: 1.08;
       font-weight: 650;
-      max-width: none;
       width: 100%;
+      text-align: center;
     }
 
     .heroSubtitle{
       margin: 0 0 4px;
       font-size: 18px;
       color: var(--muted);
-      max-width: none;
       width: 100%;
+      text-align: center;
     }
 
-    .divider{
-      height: 1px;
-      background: rgba(255,255,255,0.08);
-      margin: 28px 0 0;
-    }
-
-    /* Hero image (container width) */
     .heroImage{
-      margin-top: 0;
-      border-radius: 0;
-      border: none;
-      background: transparent;
-      overflow: visible;
-      grid-area: image;
-      align-self: start;
-      justify-self: end;
-      max-width: 520px;
+      width: 100%;
+      max-width: 1180px;
+      margin: 10px auto 0;
       position: relative;
+
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      overflow: hidden;
     }
 
-    /* Overlay blend to unify tones without hiding the image */
+    /* Blend / vignette overlay */
     .heroArt{
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.14));
-      mix-blend-mode: overlay; /* try multiply if overlay is too strong */
+      background:
+        radial-gradient(85% 75% at 50% 45%, rgba(7,10,18,0) 55%, rgba(7,10,18,0.55) 100%),
+        radial-gradient(800px 420px at 50% 15%, rgba(80,138,235,0.18), transparent 60%);
       pointer-events: none;
     }
 
@@ -194,8 +188,19 @@
       width: 100%;
       height: auto;
       display: block;
-      transform: none; /* reversed back */
+      transform: scale(1.08);
+      transform-origin: center;
     }
+
+    .divider{
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      margin: 22px 0 0;
+      width: 100%;
+    }
+
+    /* Reduce space directly below hero divider only */
+    header.hero .divider{ margin-top: 10px; }
 
     /* ========== SECTIONS ========== */
     section{
@@ -213,15 +218,15 @@
     p{
       margin: 0 0 14px;
       color: var(--muted);
-    }   
+    }
 
- /* REMOVE / REPLACE container (rrCard removed) */
-
+    /* REMOVE / REPLACE */
     .rrGrid{
       display:grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
       margin-top: 12px;
+      justify-content: center;
     }
 
     .rrBlock{
@@ -265,7 +270,7 @@
       flex: 0 0 auto;
     }
 
-   /* Contact card */
+    /* Contact card */
     .contactCard{
       margin-top: 10px;
       padding: 18px;
@@ -293,43 +298,59 @@
     .contactCta:hover{ filter: brightness(1.05); }
     .contactCta:active{ transform: translateY(1px); }
 
+    /* RR section: reduce only its top padding */
+    .rrSection { padding-top: 34px; }
+
     /* Responsive */
     @media (max-width: 860px){
-      .heroTitle{ font-size: 38px; max-width: none; }
+      .heroTitle{ font-size: 38px; }
       .heroSubtitle{ font-size: 16px; }
       .rrGrid{ grid-template-columns: 1fr; }
     }
+
     @media (max-width: 520px){
-      header.hero{ padding: 36px 0 38px; }
+      header.hero{ padding: 36px 0 38px; padding-top: 48px; }
       section{ padding: 50px 0; }
+      .rrSection { padding-top: 30px; }
+      header.hero .divider{ margin-top: 8px; }
       .heroTitle{ font-size: 34px; }
       .ctaTop{ padding: 10px 12px; border-radius: 12px; }
-      .logoImg{ height: 48px; }
+      .logoImg{ height: 64px; }
     }
 
     /* Desktop-only refinements */
     @media (min-width: 861px){
-      /* Increase header height and logo size on desktop */
       :root { --headerH: 80px; }
       .logoImg{ height: 80px; }
 
-      /* Align hero grid on desktop */
-      header.hero .container{ grid-template-columns: 1fr 560px; gap: 28px; }
-      .heroImage{ max-width: 560px; margin: 0; justify-self: end; }
-      header.hero .divider{ grid-column: 1 / -1; margin: 16px 0 0; }
+      .rrGrid{
+        grid-template-columns: repeat(2, 360px);
+        justify-content: center;
+        gap: 16px;
+        align-items: start;
+        margin-top: 16px;
+      }
 
-      /* Smaller desktop layout for REMOVE / REPLACE */
-      /* Fix horizontal width of each column and center the grid */
-      .rrGrid{ grid-template-columns: repeat(2, 360px); justify-content: start; gap: 16px; align-items: start; margin-top: 16px; }
-      .rrCard{ padding: 0; max-width: 736px; margin: 40px auto 0; }
-      .rrBlock{ display: flex; flex-direction: column; height: auto; align-self: start; padding: 12px; text-align: left; }
+      .rrBlock{
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        align-self: start;
+        padding: 12px;
+        text-align: left;
+      }
 
-      /* Tighter labels and list spacing */
       .rrLabel{ font-size: 11px; margin-bottom: 6px; }
       .rrList{ gap: 4px; }
       .rrList, .rrLabel{ text-align: left; }
       .rrList li{ align-items: flex-start; font-size: 14px; gap: 8px; }
     }
+
+    /* Utility: center alignment for designated sections only */
+    .centeredSection { text-align: center; }
+    .centeredSection .sectionTitle { margin-left: auto; margin-right: auto; }
+    .centeredSection .divider { margin-left: auto; margin-right: auto; }
+    .centeredSection .contactCard { margin-left: auto; margin-right: auto; text-align: center; }
   </style>
 </head>
 
@@ -338,16 +359,12 @@
   <!-- FIXED HEADER -->
   <div class="topHeader">
     <div class="container topHeaderInner">
-      <!-- Logo clickable => scroll to top -->
       <a class="logoLink" href="#" aria-label="Tawa-Sal">
-        <!-- Put your logo file at /var/www/tawasal/logo.png (see note below) -->
         <img class="logoImg" src="/logo.png" alt="Tawa-Sal logo" />
       </a>
 
-
-      <!-- Top-right CTA -->
       <a class="ctaTop"
-         href="https://wa.me/96176832919"
+         href="https://wa.me/96176832919?text=Hello%20Tawasal%20team%2C%0A%0AName%3A%0ABusiness%20name%3A%0A%0AWhat%20is%20the%20main%20purpose%20of%20your%20message%3F%20(choose%20one%20number)%0A1)%20Promotions%20%2F%20offers%0A2)%20Announcements%20%2F%20updates%0A3)%20Notifications%20%2F%20alerts%0A4)%20Other"
          target="_blank" rel="noopener noreferrer">
         Get started
       </a>
@@ -358,13 +375,13 @@
   <header class="hero">
     <div class="container">
       <div class="heroTextRow">
+          <div class="heroKicker">Connecting you all</div>
         <h1 class="heroTitle">Operator-managed services built around WhatsApp</h1>
         <p class="heroSubtitle">
           We design and operate WhatsApp-based messaging workflows with reliability, control, and operational oversight.
         </p>
       </div>
 
-      <!-- Container-width hero image -->
       <div class="heroImage">
         <div class="heroArt" aria-hidden="true"></div>
         <img src="/hero-illustration.png" alt="Hero illustration" />
@@ -377,37 +394,36 @@
   <main>
 
     <!-- REMOVE / REPLACE WITH -->
-    <section>
+    <section class="rrSection">
       <div class="container">
-          <div class="rrGrid">
-            <div class="rrBlock">
-              <div class="rrLabel">REMOVE</div>
-              <ul class="rrList">
-                <li><span class="rrDot"></span><span>Ban risk</span></li>
-                <li><span class="rrDot"></span><span>Chaos of multiple numbers and phones</span></li>
-                <li><span class="rrDot"></span><span>Zero visibility</span></li>
-                <li><span class="rrDot"></span><span>Manual, unscalable operations</span></li>
-              </ul>
-            </div>
-
-            <div class="rrBlock">
-              <div class="rrLabel">REPLACE WITH</div>
-              <ul class="rrList">
-                <li><span class="rrDot"></span><span>Predictability</span></li>
-                <li><span class="rrDot"></span><span>Safety</span></li>
-                <li><span class="rrDot"></span><span>Control</span></li>
-                <li><span class="rrDot"></span><span>Reporting</span></li>
-              </ul>
-            </div>
+        <div class="rrGrid">
+          <div class="rrBlock">
+            <div class="rrLabel">REMOVE</div>
+            <ul class="rrList">
+              <li><span class="rrDot"></span><span>Ban risk</span></li>
+              <li><span class="rrDot"></span><span>Chaos of multiple numbers and phones</span></li>
+              <li><span class="rrDot"></span><span>Zero visibility</span></li>
+              <li><span class="rrDot"></span><span>Manual, unscalable operations</span></li>
+            </ul>
           </div>
+
+          <div class="rrBlock">
+            <div class="rrLabel">REPLACE WITH</div>
+            <ul class="rrList">
+              <li><span class="rrDot"></span><span>Predictability</span></li>
+              <li><span class="rrDot"></span><span>Safety</span></li>
+              <li><span class="rrDot"></span><span>Control</span></li>
+              <li><span class="rrDot"></span><span>Reporting</span></li>
+            </ul>
+          </div>
+        </div>
 
         <div class="divider"></div>
       </div>
     </section>
 
-
-    <!-- HOW IT WORKS (unchanged) -->
-    <section>
+    <!-- HOW IT WORKS -->
+    <section class="centeredSection">
       <div class="container">
         <h2 class="sectionTitle">How it works</h2>
         <p>Each engagement is handled as an operated service.</p>
@@ -420,8 +436,8 @@
       </div>
     </section>
 
-    <!-- SERVICES AROUND WHATSAPP (unchanged) -->
-    <section>
+    <!-- SERVICES AROUND WHATSAPP -->
+    <section class="centeredSection">
       <div class="container">
         <h2 class="sectionTitle">Services around WhatsApp</h2>
         <p>Our services focus on WhatsApp as a communication channel.</p>
@@ -434,38 +450,29 @@
       </div>
     </section>
 
-    <!-- CONTACT (unchanged, WhatsApp only) -->
-    <section>
+    <!-- CONTACT -->
+    <section class="centeredSection">
       <div class="container">
         <h2 class="sectionTitle">Contact</h2>
         <div class="contactCard">
           <p>If you are exploring WhatsApp-based messaging for your organization, we’re available to discuss your use case.</p>
           <p style="margin-bottom: 10px; color: rgba(255,255,255,0.88); font-weight: 600;">
-            Contact us on WhatsApp to start the conversation.
+            Contact us on WhatsApp.
           </p>
 
           <a class="contactCta"
-             href="https://wa.me/96176832919"
+             href="https://wa.me/96176832919?text=Hello%20Tawasal%20team%2C%0A%0AName%3A%0ABusiness%20name%3A%0A%0AWhat%20is%20the%20main%20purpose%20of%20your%20message%3F%20(choose%20one%20number)%0A1)%20Promotions%20%2F%20offers%0A2)%20Announcements%20%2F%20updates%0A3)%20Notifications%20%2F%20alerts%0A4)%20Other"
              target="_blank" rel="noopener noreferrer">
             Contact us on WhatsApp
           </a>
 
           <div style="margin-top: 10px; font-size: 13px; color: rgba(255,255,255,0.60);">
-            WhatsApp contact only.
           </div>
         </div>
       </div>
     </section>
 
   </main>
-
-  <!--
-    DEPLOY NOTES (your VPS):
-    1) Put your logo file at: /var/www/tawasal/logo.png
-       (use the exact white mark you uploaded)
-    2) Put your illustration at: /var/www/tawasal/hero-illustration.png
-    3) Ensure Nginx serves /var/www/tawasal as the site root.
-  -->
 
 </body>
 </html>
